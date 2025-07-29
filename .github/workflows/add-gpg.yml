@@ -1,0 +1,35 @@
+name: Add GPG-signed commit to Digestabot PR
+
+on:
+  workflow_dispatch:
+
+jobs:
+  sign-and-push:
+    runs-on: ubuntu-latest
+
+    permissions:
+      contents: write
+
+    steps:
+    - uses: actions/checkout@v4
+      with:
+        ref: test_cg  # this is the digestabot PR branch
+
+    - name: Import GPG key
+      run: |
+        echo "$GPG_PRIVATE_KEY" | gpg --batch --import
+        echo "trusted-key $GPG_KEY_ID" >> ~/.gnupg/gpg.conf
+        git config --global user.signingkey "$GPG_KEY_ID"
+        git config --global commit.gpgsign true
+        git config --global user.name "sschubertchainguard"
+        git config --global user.email "scott.schubert@chainguard.dev"
+      env:
+        GPG_PRIVATE_KEY: ${{ secrets.GPG_PRIVATE_KEY }}
+        GPG_KEY_ID: ${{ secrets.GPG_KEY_ID }}
+
+    - name: Make signed commit
+      run: |
+        echo "Follow-up signed commit from CI" >> followup.txt
+        git add followup.txt
+        git commit -m "Follow-up signed commit"
+        git push origin test_cg
