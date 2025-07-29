@@ -1,4 +1,4 @@
-name: Digestabot Update
+name: Digestabot with GPG Signature
 
 on:
   workflow_dispatch:
