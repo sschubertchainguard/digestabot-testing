@@ -24,4 +24,4 @@ jobs:
         branch-for-pr: test_cg 
         signoff: true 
         #author: ${{ github.actor }} <${{ github.actor_id }}+${{ github.actor }}@users.noreply.github.com> # optional
-        author: scott.schubert@chainguard.dev # optional
+        author: sschubertchainguard <scott.schubert@chainguard.dev› # optional
