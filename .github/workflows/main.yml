@@ -19,7 +19,9 @@ jobs:
       with:
         token: ${{ secrets.GITHUB_TOKEN }}
         create-pr: true
-        signoff: true # optional
-        author: ${{ github.actor }} <${{ github.actor_id }}+${{ github.actor }}@users.noreply.github.com> # optional
+        title-for-pr: "Update Chainguard images to latest versions"
         use-gitsign: true 
+        branch-for-pr: test_cg 
+        signoff: true 
+        author: ${{ github.actor }} <${{ github.actor_id }}+${{ github.actor }}@users.noreply.github.com> # optional
         #committer: github-actions[bot] <41898282+github-actions[bot]@users.noreply.github.com> # optional
