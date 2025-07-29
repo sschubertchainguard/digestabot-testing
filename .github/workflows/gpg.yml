@@ -42,7 +42,8 @@ jobs:
       with:
         token: ${{ secrets.GITHUB_TOKEN }}
         commit-message: "Add GPG-signed update"
-        branch: gpg-signed-test
+        branch: gpg-signed-test        # source branch (head)
+        base: main                     # target branch (base)
         title: "Test GPG-signed commit"
         body: |
           This PR includes a GPG-signed commit.
