@@ -1,0 +1,23 @@
+name: Scott Testing
+
+on:
+  workflow_dispatch:
+
+jobs:
+  image-update:
+    name: Scott Testing
+    runs-on: ubuntu-latest
+
+    permissions:
+      contents: write # to push the updates
+      pull-requests: write # to open Pull requests
+      id-token: write # used to sign the commits using gitsign
+
+    steps:
+    - uses: actions/checkout@v4
+    - uses: chainguard-dev/digestabot@v1.2.2
+      with:
+        token: ${{ secrets.GITHUB_TOKEN }}
+        signoff: true # optional
+        author: ${{ github.actor }} <${{ github.actor_id }}+${{ github.actor }}@users.noreply.github.com> # optional
+        #committer: github-actions[bot] <41898282+github-actions[bot]@users.noreply.github.com> # optional
