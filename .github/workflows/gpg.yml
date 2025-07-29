@@ -33,7 +33,7 @@ jobs:
         echo "test $(date)" >> test.txt
         git add test.txt
         git commit -m "Add GPG-signed update"
-        git push origin "$branch_name"
+        git push --force origin "$branch_name"
       env:
         GPG_KEY_ID: ${{ secrets.GPG_KEY_ID }}
 
