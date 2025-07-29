@@ -29,7 +29,8 @@ jobs:
 
     - name: Make signed commit
       run: |
-        echo "Follow-up signed commit from CI" >> followup.txt
-        git add followup.txt
-        git commit -m "Follow-up signed commit"
+        git commit --allow-empty -S -m "Add GPG-signed commit"
+        #echo "Follow-up signed commit from CI" >> followup.txt
+        #git add followup.txt
+        #git commit -m "Follow-up signed commit"
         git push origin test_cg
