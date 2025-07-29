@@ -1,17 +1,17 @@
-name: Scott Testing
+name: Digestabot Update
 
 on:
   workflow_dispatch:
 
 jobs:
   image-update:
-    name: Scott Testing
+    name: Digestabot Update
     runs-on: ubuntu-latest
 
     permissions:
-      contents: write # to push the updates
-      pull-requests: write # to open Pull requests
-      id-token: write # used to sign the commits using gitsign
+      contents: write
+      pull-requests: write
+      id-token: write
 
     steps:
     - uses: actions/checkout@v4
@@ -23,5 +23,4 @@ jobs:
         use-gitsign: true 
         branch-for-pr: test_cg 
         signoff: true 
-        #author: ${{ github.actor }} <${{ github.actor_id }}+${{ github.actor }}@users.noreply.github.com> # optional
-        author: sschubertchainguard <scott.schubert@chainguard.dev> # optional
+        author: sschubertchainguard <scott.schubert@chainguard.dev>
