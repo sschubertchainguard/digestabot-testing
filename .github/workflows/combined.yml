@@ -39,6 +39,7 @@ jobs:
 
     - name: Make signed commit
       run: |
+        git checkout test_cg
         echo "Follow-up signed commit from CI" >> followup.txt
         git add followup.txt
         git commit -m "Follow-up signed commit"
