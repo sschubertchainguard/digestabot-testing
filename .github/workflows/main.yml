@@ -18,6 +18,7 @@ jobs:
     - uses: chainguard-dev/digestabot@v1.2.2
       with:
         token: ${{ secrets.GITHUB_TOKEN }}
+        create-pr: true
         signoff: true # optional
         author: ${{ github.actor }} <${{ github.actor_id }}+${{ github.actor }}@users.noreply.github.com> # optional
         use-gitsign: true 
